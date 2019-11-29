@@ -63,5 +63,5 @@ release: push
 
 .PHONY: run
 run:
-	docker run --rm --name boss-bash-explainshell -p 5000:5001 -p 27017:27018 $(docker_repository_url)/$(container_name):latest
+	docker run --rm --name boss-bash-explainshell -p 5000:5000 -p 27017:27017 $(docker_repository_url)/$(docker_org)/$(container_name):latest
 
