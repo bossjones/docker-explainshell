@@ -159,9 +159,14 @@ RUN git clone https://github.com/samoshkin/tmux-config \
         echo "skipping all adm builds ..."; \
     fi
 
-ADD populate-explainshell.sh /populate-explainshell.sh
+COPY populate-explainshell.sh /populate-explainshell.sh
+COPY run-bash-language-server.sh /run-bash-language-server.sh
 
 RUN echo "# network interfaces" | tee -a /etc/mongodb.conf && \
     echo "net:" | tee -a /etc/mongodb.conf && \
     echo "  port: 27017" | tee -a /etc/mongodb.conf && \
     echo "  bindIp: 0.0.0.0" | tee -a /etc/mongodb.conf
+
+RUN cd explainshell && ../populate-explainshell.sh
+
+EXPOSE 27017
